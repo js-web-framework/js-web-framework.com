@@ -1,0 +1,87 @@
+<h1>Getting started (MYSQL)</h1>
+
+<p>
+  Fill out the variables in the .env file.
+  You can read about the variables <a href="/docs/environment-file">here</a>.
+</p>
+
+<pre><code>mysql_host=localhost
+mysql_user=root
+mysql_password=
+mysql_database=demo
+mysql_soft_delete=false
+mysql_soft_delete_field=deleted
+mysql_query_debug=true
+mysql_port=3306
+</code></pre>
+
+<h2>Create a table</h2>
+<p>
+  Create a file db.js file.
+</p>
+<pre><code>const db = require('js-web').migration.mysql
+
+const migrate = async _ => {
+  await db.table('users',{
+    id: 'id',
+    name: 'string',
+    created: 'datetime'
+  })
+  await db.table('pets',{
+    id: 'id',
+    name: 'string',
+    user_id: 'int',
+    created: 'datetime'
+  })
+  process.exit()
+}
+
+migrate()
+</code></pre>
+
+<p>
+  Run the db.js file.
+</p>
+<pre><code>node db.js</code></pre>
+
+<h2>Using MYSQL</h2>
+<p>
+  Define <span>tables</span> and <span>db</span> const.
+</p>
+<pre><code>import {
+  storage
+} from 'js-web'
+
+const { mysql } = storage
+
+const users = mysql.table('users')</code></pre>
+
+<h3>Table(tablename)</h3>
+<p>
+  The table function takes a table name as a parameter, and it returns an object with the following functions.
+</p>
+<pre><code>// console.log(mysql.table('users'))
+{
+  delete: [Function: delete],
+  find: [Function: find],
+  select: [Function: select],
+  selectFields: [Function: selectFields],
+  selectCols: [Function: selectCols],
+  update: [Function: update],
+  create: [Function: create]
+}</code></pre>
+
+<h2>Storage and routing</h2>
+<p>
+  All MYSQL calls are returning a <span>Promise</span>,
+  so you need to use an <span>async</span> callback function. Now it's
+  possible to utilize the <span>await</span> keyword.
+</p>
+<pre><code>route('/', async (input) => {
+  return await users.select()
+})</code></pre>
+<pre><code>postRoute('/create-simon', async (input) => {
+  const simonsId = await users.create({name:'Simon'})
+  console.log(simonsId)
+  return back()
+})</code></pre>

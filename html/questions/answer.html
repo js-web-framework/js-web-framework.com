@@ -1,0 +1,36 @@
+{{#each answers}}
+<div class="result-section">
+   <div class="row">
+      <div class="col-sm-1 col-md-1">
+         <div class="result-left-icon">
+            <img class="profile-image" style="margin-top:-15px" src="/assets/user-images/{{user_id}}.jpg" />
+         </div>
+      </div>
+      <div class="col-xs-10 col-sm-10 col-md-10">
+         <div class="result-content">
+           <div style="display:block;height:40px;width:100%;">
+            {{created}} by <span class="username">{{username}}</span>
+            {{#if isOwn}}
+            <p style="text-align:right;float:right;display: block">
+              <a href="/answers/delete/{{id}}" class="confirm-delete" style="color:#f67363">Delete</a>
+               or
+              <a href="/questions/edit-answer/{{this.username}}/{{title}}/{{question_id}}/{{id}}" class="action" style="green">Edit</a>
+            </p>
+            {{/if}}
+            </div>
+            <div class="less-description-display">
+              <p>
+              {{{answer}}}
+              </p>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-1 col-md-1" >
+
+      </div>
+   </div>
+   <!-- /.row -->
+</div>
+<!-- /.result-section -->
+<hr>
+{{/each}}

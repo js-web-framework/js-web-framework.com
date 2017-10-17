@@ -1,0 +1,39 @@
+<h1>Deleting (MYSQL)</h1>
+<p>
+  The following examples are using this migration
+</p>
+<pre><code>db.table('users',{
+  id: 'id',
+  name: 'string',
+  created: 'datetime'
+})</code></pre>
+
+<p>
+    All examples below are using these const definitions.
+</p>
+<pre><code>import {
+  storage
+} from 'js-web'
+
+const { mysql } = storage
+
+const users = mysql.table('users')</code></pre>
+
+<h2>How to delete</h2>
+<p>
+  <p>Use the <span>delete(where)</span> function on the return object from the <span>table</span> function. In the example below, the users is <span>const users = db.table('users')</p>
+</p>
+<pre><code>users.delete({name: 'Simon'})</code></pre>
+<pre><code>users.delete({id: 1})</code></pre>
+
+<h2>Soft deleting</h2>
+<p>
+  <span>js-web</span> has a soft deleting build in. All you need
+  is a bit field on all your tables and set the .env file correct.
+  In the example below, all tables need to have a field named <span>deleted</span> with the type of <span>bool</span>.
+  <br  />
+  The <span>delete</span> function will only set the boolean to true and not delete the row. All reading functions will  automatically
+  filter the deleted rows.
+</p>
+<pre><code>mysql_soft_delete=true
+mysql_soft_delete_field=deleted</code></pre>

@@ -1,0 +1,20 @@
+<h1>Requesting</h1>
+<p>js-web is using the axios library to make http requests</p>
+<pre><code>import {
+  redirect
+} from 'js-web'</code></pre>
+
+<h3>GET Request</h3>
+<pre><code>request.get('/some-uri')</code></pre>
+<pre><code>request.get('/some-uri',params)</code></pre>
+
+<h3>POST Request</h3>
+<pre><code>request.post('/some-uri')</code></pre>
+<pre><code>request.post('/some-uri',params)</code></pre>
+<pre><code>request.post('/some-uri',{param1: 'value',param2: 'value'})</code></pre>
+
+<h3>Request an image</h3>
+<p>
+  You can download an image with the request.image function.
+</p>
+<pre><code>request.image('/image-url','/assets/new-image.jpg')</code></pre>

@@ -1,0 +1,42 @@
+<h1>Migrations (MYSQL)</h1>
+<p><span>js-web</span> can handle all table creations.</p>
+<p>The table creations are possible by using the <span>table</span> function
+ found on the migration.mysql object.</p>
+<pre><code>const db = require('js-web').migration.mysql</code></pre>
+
+<h3>Following fieldtypes are supported by the js-web migrations</h3>
+<pre><code>/*
+  Fieldtypes:
+  id (auto increment),
+  string,
+  int,
+  datetime,
+  bool,
+  text
+ */</code></pre>
+<h3>Table(tablename,tableDefinitions)</h3>
+<pre><code>const db = require('js-web').migration.mysql
+
+const migrate = async _ => {
+  await db.table('users',{
+    id: 'id',
+    name: 'string',
+    created: 'datetime'
+  })
+  await db.table('pets',{
+    id: 'id',
+    name: 'string',
+    user_id: 'int',
+    created: 'datetime'
+  })
+  process.exit()
+}
+
+migrate()</code></pre>
+
+<h3>Create tables</h3>
+<p>
+   Run the js file, and the database will be corrected to match the
+   table definitions.
+</p>
+<pre><code>node db.js</code></pre>

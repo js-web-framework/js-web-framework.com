@@ -1,0 +1,12 @@
+{{{include 'html/partials/header.html'}}}
+
+{{{include 'html/menu/questions-menu.html'}}}
+
+<div class="col-sm-9 col-md-9" id="content">
+{{{include 'html/partials/alerts.html'}}}
+{{#each questions}}
+    {{{include 'html/questions/question.html' this}}}
+{{/each}}
+
+{{{include 'html/partials/footer.html'}}}
+{{{include 'html/login/login.html'}}}

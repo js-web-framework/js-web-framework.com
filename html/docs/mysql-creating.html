@@ -1,0 +1,42 @@
+<h1>Creating (MYSQL)</h1>
+<p>
+  The following examples are using this migration:
+</p>
+<pre><code>db.table('users',{
+  id: 'id',
+  name: 'string',
+  created: 'datetime'
+})</code></pre>
+
+<p>
+  All examples below are using these const definitions.
+</p>
+<pre><code>import {
+  storage
+} from 'js-web'
+
+const { mysql } = storage
+
+const users = mysql.table('users')</code></pre>
+
+<h3>Create(obj)</h3>
+<p>Use the <span>create(obj)</span> function on the return object, from the <span>table</span> function. In the example below, the users is <span>const users = db.table('users')</p>
+
+<pre><code>const simonsId = await users.create({
+  name: 'Simon Madsen',
+  created: db.now()
+})</code></pre>
+
+<h3>Create() inside a route</h3>
+<p>
+  Remember to use the <span>await</span> and <span>async</span>.
+  The create function is returning a <span>Promise</span>.
+</p>
+<pre><code>route('/create-user/:name', async (input) => {
+  const userId = await users.create({
+    name: input.name,
+    created: db.now()
+  })
+  console.log('user id: '+userId+' has been created');
+  return redirect('/')
+})</code></pre>

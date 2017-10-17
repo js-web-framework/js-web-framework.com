@@ -1,0 +1,134 @@
+<h1>Routing</h1>
+
+<h2>Routing functions</h2>
+
+<pre><code>import {
+  htmlRoute,
+  route,
+  postRoute,
+  notFound
+} from 'js-web'
+</code></pre>
+
+<h3>route</h3>
+
+<pre><code>route(uri,function)
+</code></pre>
+
+<p>The route function is responding to a GET request, matching the uri parameter.</p>
+
+<p>The function passed to the route can return an object or a redirect. If you pass an object,
+  the route function will send the object as a json result.</p>
+
+<pre><code>route(&#39;/user-list&#39;, async (input,session,cookie) =&gt; {
+ return {users: arrayOfUsers}
+})
+</code></pre>
+
+<h3>postRoute</h3>
+
+<p>postRoute(uri,function)</p>
+
+<p>The postRoute function is similar to the route except it is responding to a POST request.</p>
+
+<pre><code>postRoute(&#39;/user-list&#39;, async (input,session,cookie) =&gt; {
+ return {users: arrayOfUsers}
+})
+</code></pre>
+
+<h3>htmlRoute</h3>
+
+<p>htmlRoute(uri,pathToHtmlFile,function,injections)</p>
+
+<p>The htmlRoute function is responding to a GET request.</p>
+
+<p>The function passed through the route can return an object. This object will be used as context in the passed html file. Read more on <a href="/docs/templating">Templating</a>.</p>
+
+<p>You can read about the injections parameter here <a href="/docs/injections">Injections</a></p>
+
+<pre><code>const injections = [
+  inject.style('style/main.css'),
+  inject.script('script/script.js')
+]
+
+htmlRoute('/','html/index.html',(input, session) => {
+  return { hello: 'World' }
+}, injections)
+</code></pre>
+
+<pre><code>htmlRoute('/','html/index.html',(input, session) => {
+return { hello: 'World' }
+})
+</code></pre>
+
+<h3>Parameters</h3>
+
+<p>You can accept parameters in all the route functions.</p>
+
+<pre><code>post(&#39;/user/:id&#39;, async (input,session,cookie) =&gt; {
+ // input.id
+})
+</code></pre>
+
+<h3>Redirect</h3>
+
+<p>You can return a redirect in all routes.</p>
+<pre><code>post('/user/:id', async (input,session,cookie) {
+ return redirect('/home')
+})</code></pre>
+<pre><code>post('/user/:id', async (input,session,cookie) {
+ return back()
+})</code></pre>
+
+<h2>Route callback function</h2>
+
+<p>The callback function will receive three parameters: <em>input</em>, <em>session</em> and <em>cookie</em></p>
+
+<h3>Input</h3>
+
+<p>The input variable contains all inputs sent to the route.</p>
+
+<ul>
+	<li>route parameters (/user/:id)</li>
+	<li>posted inputs</li>
+	<li>url query parameter</li>
+</ul>
+
+<p>It has an only function, so you can filter inputs.</p>
+
+<pre><code>(input,session,cookie) =&gt; {
+ user.create( input.only([&#39;name&#39;,&#39;email&#39;]) )
+}
+</code></pre>
+
+<h3>Session</h3>
+
+<p>The session variable contains four functions: <em>get</em>,<em>set</em>,<em>getFlash</em> and <em>setFlash</em>.</p>
+
+<pre><code>(input,session,cookie) =&gt; {
+ session.get(&#39;key&#39;,&#39;defaultValue&#39;)
+ session.getFlash(&#39;key&#39;,&#39;defaultValue&#39;)
+ session.set(&#39;key&#39;,&#39;value&#39;)
+ session.setFlash(&#39;key&#39;,&#39;value&#39;)
+}
+</code></pre>
+
+<h3>Cookie</h3>
+
+<p>The cookie variable contains two functions: <em>get</em> and <em>set</em>.</p>
+
+<pre><code>(input,session,cookie) =&gt; {
+ cookie.get(&#39;key&#39;,&#39;defaultValue&#39;)
+ cookie.set(&#39;key&#39;,&#39;value&#39;)
+}
+</code></pre>
+
+
+<h2>404 / Not found</h2>
+
+<p>Display html.</p>
+<pre><code>notFound('html/not-found.html', null ,injections)</code></pre>
+
+
+<p>Redirect.</p>
+<pre><code>notFound(null, _ => redirect('/'))</code></pre>

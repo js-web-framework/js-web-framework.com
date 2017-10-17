@@ -1,0 +1,28 @@
+<h1>Updating (MYSQL)</h1>
+<p>
+  The following examples are using this migration:
+</p>
+<pre><code>db.table('users',{
+  id: 'id',
+  name: 'string',
+  created: 'datetime'
+})</code></pre>
+
+<p>
+    All examples below are using these const definitions.
+</p>
+<pre><code>import {
+  storage
+} from 'js-web'
+
+const { mysql } = storage
+
+const users = mysql.table('users')</code></pre>
+
+<h2>How to update</h2>
+<p>
+  <p>Use the <span>update(updates,where)</span> function on the return object from the <span>table</span> function.
+      In the example below, the users is <span>const users = db.table('users')</p>
+</p>
+<pre><code>users.update({name: 'Simon M'},{name: 'Simon'})</code></pre>
+<pre><code>users.update({name: 'Simon M'},{id:1})</code></pre>

@@ -1,0 +1,86 @@
+<h1>Injections</h1>
+<pre><code>import {
+  inject
+} from 'js-web'
+</code></pre>
+<p>Injections allow you to bundle your script and style files to include them on your site.</p>
+<p>
+  The recommended way to use injections is to create an injection array.
+</p>
+<pre><code>const injections = [
+    inject.jquery(),
+    inject.bootstrap(),
+    inject.style('style/site.css'),
+    inject.script('script/main.js')
+  ]
+</code></pre>
+<p>
+  Then, you can add the <span>injections</span> array to the <span>htmlRoutes</span> as the last parameter.
+</p>
+<pre><code>htmlRoute('/','html/index.html', async (input,session,cookie) => {
+  return {}
+},injections)
+</code></pre>
+
+<h2>Inject</h2>
+<h3>Build in libraries</h3>
+<pre><code>const injections = [
+    inject.jquery(),
+    inject.bootstrap(),
+    inject.socketIO()
+  ]
+</code></pre>
+
+<h3>Inject.script()</h3>
+<p>
+  The inject script can take a file or url.
+</p>
+<pre><code>const injections = [
+    inject.script('script/site.js'),
+    inject.script('http://cdn.somelib.com/file.js')
+  ]
+</code></pre>
+<h3>Inject.style()</h3>
+<p>
+  The inject style can take css- , sass- and stylus files.
+</p>
+<pre><code>const injections = [
+    inject.style('site.sass'),
+    inject.script('site.styl'),
+    inject.script('site.css')
+  ]
+</code></pre>
+<h2>Google Analytics</h2>
+<pre><code>const injections = [
+    inject.googleAnalytics()
+  ]
+</code></pre>
+<h2>React</h2>
+<p>
+  It's possible to inject react into your project.
+</p>
+<p>
+  Add a react inject to the injections array.
+</p>
+<pre><code>const injections = [
+    inject.react('react/app.jsx','app-id')
+  ]
+</code></pre>
+<p>
+  Create react root/app component
+</p>
+<pre><code>export default class App extends React.Component{
+  render(){
+    return (
+      &#x3C;h1&#x3E; Hey i am react!&#x3C;/h1&#x3E;
+    )
+  }
+}
+</code></pre>
+<p>
+  Add a binding div to the html file.
+</p>
+<pre><code>&#x3C;div id="app-id"&#x3E;
+
+&#x3C;/div&#x3E;
+</code></pre>

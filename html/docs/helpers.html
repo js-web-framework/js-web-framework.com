@@ -1,0 +1,23 @@
+<h1>Helpers</h1>
+<pre><code>import {
+  helpers
+} from 'js-web'</code></pre>
+<p>
+  Helper functions:
+</p>
+<pre><code>// console.log(helpers)
+{
+  hash: [AsyncFunction: hash],
+  compareHash: [AsyncFunction: compareHash]
+}</code></pre>
+<p>
+  Using the hash functions:
+</p>
+<pre><code>const helpers = helpers
+const password = 'mypw'
+const hash = await helpers.hash(password)
+if(await helpers.compareHash('mypw',hash)){
+  return redirect('/admin')
+}
+return back()
+</code></pre>

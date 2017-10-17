@@ -1,0 +1,26 @@
+{
+  "name": "js-web-framework.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "babel": {
+    "plugins": ["transform-es2015-modules-commonjs"]
+  },
+  "license": "ISC",
+  "dependencies": {
+    "amdefine": "^1.0.1",
+    "ent": "^2.2.0",
+    "js-web": "^1.5.1",
+    "slugify": "^1.2.1",
+    "time_ago_in_words": "^1.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}

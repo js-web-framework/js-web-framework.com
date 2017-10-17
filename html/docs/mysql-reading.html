@@ -1,0 +1,121 @@
+<h1>Reading (MYSQL)</h1>
+<p>
+  The following examples are using this migration:
+</p>
+<pre><code>db.table('users',{
+  id: 'id',
+  name: 'string',
+  created: 'datetime'
+})</code></pre>
+
+<p>
+    All examples below are using these const definitions.
+</p>
+<pre><code>import {
+  storage
+} from 'js-web'
+
+const { mysql } = storage
+
+const users = mysql.table('users')</code></pre>
+
+<h2>Reading functions</h2>
+<p>
+  Following reading functions are available on the object returned by the <span>table(tablename)</span> function.
+</p>
+<pre><code>{
+  select: [Function: select],
+  find: [Function: find],
+  selectFields: [Function: selectFields]
+}</code></pre>
+
+<h2>The select function</h2>
+<p><span>select(where,orderBy,limit)</span><br />
+  The select function returns an array of rows.
+</p>
+<pre><code>await users.select()</code></pre>
+<pre><code>[
+   {
+      "id":1,
+      "name":"Amanda",
+      "created":"2017-08-20T19:23:43.000Z"
+   },
+   {
+      "id":2,
+      "name":"Simon",
+      "created":"2017-08-20T19:23:43.000Z"
+   }
+]</code></pre>
+<h3>
+  Where paramter
+</h3>
+<pre><code>await users.select({name:'Amanda'})</code></pre>
+<pre><code>[
+   {
+      "id":1,
+      "name":"Amanda",
+      "created":"2017-08-20T19:23:43.000Z"
+   }
+]</code></pre>
+<h3>
+  Order By paramter
+</h3>
+<pre><code>await users.select(null,'id desc')</code></pre>
+<pre><code>[
+   {
+      "id":2,
+      "name":"Simon",
+      "created":"2017-08-20T19:23:43.000Z"
+   },
+   {
+      "id":1,
+      "name":"Amanda",
+      "created":"2017-08-20T19:23:43.000Z"
+   }
+]</code></pre>
+<h3>
+  Limit paramter
+</h3>
+<pre><code>await users.select(null,'id desc',1)</code></pre>
+<pre><code>[
+   {
+      "id":2,
+      "name":"Simon",
+      "created":"2017-08-20T19:23:43.000Z"
+   }
+]</code></pre>
+
+<h3>Routing and Reading</h3>
+<p>
+  Remember to use the <span>await</span> and <span>async</span>, because
+  the select function is returning a <span>Promise</span>.
+</p>
+<pre><code>web.route('/', async (input) => {
+  return await users.select()
+})</code></pre>
+<h2>The find function</h2>
+<p><span>find(where)</span> <br />
+  The select function returns a object or null if not found
+</p>
+<pre><code>await users.find({id:1})</code></pre>
+<pre><code>{
+   "id":1,
+   "name":"Amanda",
+   "created":"2017-08-20T19:23:43.000Z"
+}</code></pre>
+
+<h2>The selectFields function</h2>
+<p><span>select(fields,where,orderBy,limit)</span><br />
+  The select function returns an array of rows.
+</p>
+<pre><code>await users.selectFields('id,name as person')</code></pre>
+<pre><code>[
+   {
+      "id":1,
+      "person":"Amanda"
+   },
+   {
+      "id":2,
+      "person":"Simon"
+   }
+]</code></pre>

@@ -1,0 +1,49 @@
+<h1>.env</h1>
+<p>You can get the .env file template <a href="https://github.com/simonsmadsen/js-web/blob/master/template-files/.env_template">here</a> or
+with the <a href="/docs/cli">js-web-cli</a> (js-web env)</p>
+<h3>mac</h3>
+<p>Sets the mysql socketPath = '/tmp/mysql.sock'</p>
+<pre><code>mac=false</code></pre>
+<h3>port</h3>
+<p>Sets til express listen port.</p>
+<pre><code>port=8080</code></pre>
+<h3>allowCrossDomain</h3>
+<p>Allowing cors calls.</p>
+<pre><code>allowCrossDomain=false</code></pre>
+<h3>https settings</h3>
+<pre><code>https_privkey=
+https_cert=
+https_fullchain=
+https=false</code></pre>
+<h3>mysql credentials</h3>
+<pre><code>mysql_host=localhost
+mysql_user=root
+mysql_password=
+mysql_database=
+mysql_port=3306</code></pre>
+
+<h3>soft delete</h3>
+<p>Adding where {deleted_field} = 1 to all queries</p>
+<pre><code>mysql_soft_delete=false
+mysql_soft_delete_field=deleted</code></pre>
+<h3>mysql_query_debug</h3>
+<p>console.log all queries. </p>
+<pre><code>mysql_query_debug=false</code></pre>
+<h3>Mail credentials</h3>
+<pre><code>mail_host=smtp.gmail.com</code></pre>
+<pre><code>mail_port=587</code></pre>
+<pre><code>mail_ssl=false</code></pre>
+<pre><code>mail_user=name@gmail.com</code></pre>
+<pre><code>mail_password=mypassword</code></pre>
+<pre><code>mail_from=from@mail.dk</code></pre>
+<h3>app_key</h3>
+<p>This should be a random string string; the app key is used as the session key.</p>
+<pre><code>app_key=writeRandomString</code></pre>
+<h3>Credentials to social authorization</h3>
+<pre><code>facebook_app_id=</code></pre>
+<pre><code>google_client_id=</code></pre>
+<pre><code>google_api_key=</code></pre>
+<pre><code>twitter_consumer_key=</code></pre>
+<pre><code>twitter_consumer_secret=</code></pre>
+<h3>Google Analytics</h3>
+<pre><code>google_analytics=</code></pre>

@@ -1,0 +1,165 @@
+/*
+
+Atom One Light by Daniel Gamage
+Original One Light Syntax theme from https://github.com/atom/one-light-syntax
+
+base:    #fafafa
+mono-1:  #383a42
+mono-2:  #686b77
+mono-3:  #a0a1a7
+hue-1:   #0184bb
+hue-2:   #4078f2
+hue-3:   #a626a4
+hue-4:   #50a14f
+hue-5:   #e45649
+hue-5-2: #c91243
+hue-6:   #986801
+hue-6-2: #c18401
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #383a42;
+  background: #ECF1F5;
+}
+
+pre {
+  background: #ECF1F5;
+  border: none;
+  margin: 10px;
+  margin-left: 0px;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #a0a1a7;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #a626a4;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e45649;
+}
+
+.hljs-literal {
+  color: #0184bb;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #50a14f;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #c18401;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #986801;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #4078f2;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+.side-menu a {
+  display: block;
+  width: 100%;
+  float:left;
+}
+
+.login-container{
+  height:284px;
+  width:100%;
+  background:white;
+  border-top:2px solid #37485F;
+}
+
+#login-modal .modal-content{
+    height: 200px;
+}
+
+.head_title h4{
+  color:#37485F;
+  text-align:center;
+  font-size:25px;
+  font-family: Roboto;
+  width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.side-menu .login-btn {
+  border: 2px solid #37485F;
+  width: 85%;
+  padding: 3px;
+  text-align: center;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 22px;
+  background-color: #37485F;
+  color: white;
+  transition: 0.2s;
+  transition-timing-function: cubic-bezier(0.04, 3.21, 1, 1);
+}
+.side-menu .login-btn:hover {
+  transform: scale(1.1);
+  background-color: #ECF1F5;
+}
+.pictures {
+  text-align:center;
+}
+.pictures1 {text-align:center;}
+.pictures2 {text-align:center;}
+.pictures3 {text-align:center;}
+.pictures4 {text-align:center;}
+.pictures5 {text-align:center;}
+.pictures img{width:270px; height:45px; text-align:center; margin-bottom:4px;}
+.pictures1 img{width:270px; height:45px; text-align:center; margin-bottom:4px;}
+.pictures2 img{width:270px; height:45px; text-align:center; margin-bottom:4px;}
+.pictures3 img{width:270px; height:45px; text-align:center; margin-bottom:4px;}
+.pictures4 img{width:270px; height:45px; text-align:center; margin-bottom:4px;}
+.pictures5 img{width:270px; height:45px; text-align:center; margin-bottom:4px;}

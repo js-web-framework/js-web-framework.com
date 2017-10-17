@@ -1,0 +1,42 @@
+{{#if user_id}}
+<div class="row">
+  <div class="col-md-12">
+
+
+  <div style="padding-left:30px;padding-right:30px;">
+  <form method="post" action="
+  {{#if edit}}
+  /answers/update
+  {{/if}}
+  {{#unless edit}}
+  /answers/create
+  {{/unless}}
+  ">
+      <div class="form-group">
+        <label for="exampleInputFile">Answer</label>
+        <textarea style="min-height: 150px" name="answer" class="form-control">{{edit.answer}}</textarea>
+      </div>
+      <input type="hidden" name="question_id" value="{{question.id}}" />
+      {{#if edit}}
+      <input type="hidden" name="answer_id" value="{{edit.id}}" />
+      {{/if}}
+      <button type="submit" class="btn btn-default btn-ml btn-outline">
+       {{#if edit}}
+         Update
+       {{/if}}
+       {{#unless edit}}
+        Add
+       {{/unless}}
+      answer</button>
+    </form>
+  </div>
+  </div>
+</div>
+{{/if}}
+{{#unless user_id}}
+<div class="row">
+  <div class="col-md-12">
+  <span class="login">Sign In</span> to participate in this question.
+  </div>
+</div>
+{{/unless}}

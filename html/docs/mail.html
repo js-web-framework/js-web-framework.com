@@ -1,0 +1,52 @@
+<h1>Mail</h1>
+<pre><code>import {
+  htmlMail,
+  plainMail
+} from 'js-web'</code></pre>
+<p>
+  Mail functions:
+</p>
+<pre><code>const web = require('js-web')
+htmlMail(to,subject,htmlFile,templateContext)
+plainMail(to,subject,text)
+</code></pre>
+<h3>
+  Setup
+</h3>
+<p>
+  To get the mail working, you have to fill the <a href="/docs/environment-file">.env</a>file mail section. The section’s default is setup to Gmail, so if you use Gmail as stmp provider, you can write your email and password. This way it will work
+</p>
+<pre><code>mail_host=smtp.gmail.com
+mail_port=587
+mail_ssl=false
+mail_user=name@gmail.com
+mail_password=mypassword
+mail_from=
+</pre></code>
+<h3>
+ Plain mail
+</h3>
+<pre><code>const web = require('js-web')
+const emailBody = 'Hello, this is the email body'
+plainMail('person@gmail.com','email from js-web',emailBody)
+</code></pre>
+<h3>
+ Html mail
+</h3>
+<p>
+  The html mail is using a html file as an email bod, its using the same templating as the <span>htmlRoute()</span> function.
+  You can read more about templating <a href="/docs/templating">here.</a>
+
+</p>
+<pre><code>const web = require('js-web')
+htmlMail(
+  'person@gmail.com',
+  'email from js-web',
+  'html/mail/welcome.html',
+  {name: 'Simon'}
+)
+</code></pre>
+<p>
+  html/mail/welcome.html
+</p>
+<pre><code>Welcome: \{{name}}</code></pre>

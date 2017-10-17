@@ -1,0 +1,32 @@
+{{{include 'html/partials/header.html' this}}}
+{{{include 'html/menu/questions-menu.html' this}}}
+
+<div class="col-sm-9 col-md-9" id="questions-content">
+  {{{include 'html/partials/alerts.html' this}}}
+  <div class="row">
+    <h1>Edit question</h1>
+    <div style="padding-left:30px;padding-right:30px;">
+    <form method="post" action="/questions/update">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Category</label>
+          <select name="category" class="form-control">
+            {{#each categories}}
+            <option {{isSelected}} value="{{id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Title</label>
+          <input name="title" value={{question.title}} class="form-control" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <input type="hidden" name="id" value="{{question.id}}"  />
+          <label for="exampleInputFile">Question</label>
+          <textarea style="min-height: 250px" name="question" class="form-control">{{question.question}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-default btn-ml btn-outline">Update question</button>
+      </form>
+    </div>
+  </div>
+{{{include 'html/partials/footer.html' this}}}
+{{{include 'html/login/login.html' this}}}
