@@ -25,13 +25,15 @@ Remember to follow our eslint config and run all test before submitting a pull r
 
 1. Fork it!
 2. Setup
-  - npm install
-  - js-web env
-  - setup mysql in .env file
-  - node db.js (setting up the tables)
-  - node run.js
-3. Create your feature branch: git checkout -b my-new-feature
-4. Commit your changes: git commit -am 'Add some feature'
-5. Push to the branch: git push origin my-new-feature
+```
+  npm install
+  js-web env
+  setup mysql in .env file
+  node db.js (setting up the tables)
+  node run.js
+  ```
+3. Create your feature branch: `git checkout -b my-new-feature`
+4. Commit your changes: `git commit -am 'Add some feature'`
+5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request
 
