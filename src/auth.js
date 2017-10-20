@@ -1,6 +1,5 @@
 const web = require('js-web')
 
-const social = web.social
 const db = web.storage.mysql
 /**
  * Tables!
@@ -27,7 +26,7 @@ module.exports.facebookAccessExists = input => facebookAccess.find({ facebook_id
 
 module.exports.createFacebookAccess = async (input) => {
   const userId = await createUser(input.name)
-  social.getFacebookImage(input.accessToken, `assets/user-images/${userId}.jpg`)
+  //social.getFacebookImage(input.accessToken, `assets/user-images/${userId}.jpg`)
   await facebookAccess.create({
     accessToken: input.accessToken,
     signedRequest: input.signedRequest,
@@ -46,7 +45,7 @@ module.exports.twitterAccessExists = input => twitterAccess.find({ twitter_id: i
 
 module.exports.createTwitterAccess = async (input) => {
   const userId = await createUser(input.screen_name)
-  social.getTwitterImage(input.screen_name, `assets/user-images/${userId}.jpg`)
+  //social.getTwitterImage(input.screen_name, `assets/user-images/${userId}.jpg`)
   await twitterAccess.create({
     accessToken: input.accessToken,
     accessTokenSecret: input.accessTokenSecret,
@@ -64,7 +63,7 @@ module.exports.googleAccessExists = input => googleAccess.find({ google_id: inpu
 
 module.exports.createGoogleAccess = async (input) => {
   const userId = await createUser(`${input.givenName} ${input.familyName}`)
-  social.getGoogleImage(input.id, `assets/user-images/${userId}.jpg`)
+  //social.getGoogleImage(input.id, `assets/user-images/${userId}.jpg`)
   await googleAccess.create(Object.assign(
     input.only([
       'resourceName',
